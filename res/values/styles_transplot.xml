@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File created by the Android Action Bar Style Generator
+
+     Copyright (C) 2011 The Android Open Source Project
+     Copyright (C) 2012 readyState Software Ltd
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <style name="Theme.Transplot" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="actionBarItemBackground">@drawable/selectable_background_transplot</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Transplot</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Transplot</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Transplot</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Transplot</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Transplot</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_transplot</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_transplot</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Transplot</item>
+
+                <!-- Light.DarkActionBar specific -->
+        <item name="actionBarWidgetTheme">@style/Theme.Transplot.Widget</item>
+
+    </style>
+
+    <style name="ActionBar.Solid.Transplot" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="background">@drawable/ab_solid_transplot</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_transplot</item>
+        <item name="backgroundSplit">@drawable/ab_bottom_solid_transplot</item>
+        <item name="progressBarStyle">@style/ProgressBar.Transplot</item>
+    </style>
+
+    <style name="ActionBar.Transparent.Transplot" parent="@style/Widget.AppCompat.ActionBar">
+        <item name="background">@drawable/ab_transparent_transplot</item>
+        <item name="progressBarStyle">@style/ProgressBar.Transplot</item>
+    </style>
+	
+    <style name="PopupMenu.Transplot" parent="@style/Widget.AppCompat.PopupMenu">	
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_transplot</item>	
+    </style>
+	
+    <style name="DropDownListView.Transplot" parent="@style/Widget.AppCompat.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_transplot</item>
+    </style>
+
+    <style name="ActionBarTabStyle.Transplot" parent="@style/Widget.AppCompat.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_transplot</item>
+    </style>
+	
+    <style name="DropDownNav.Transplot" parent="@style/Widget.AppCompat.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/spinner_background_ab_transplot</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_transplot</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_transplot</item>
+    </style>
+    
+    <style name="ProgressBar.Transplot" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_transplot</item>
+    </style>
+    
+    <style name="ActionButton.CloseMode.Transplot" parent="@style/Widget.AppCompat.ActionButton.CloseMode">
+        <item name="android:background">@drawable/btn_cab_done_transplot</item>
+    </style>
+    
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.Transplot.Widget" parent="@style/Theme.AppCompat">
+        <item name="popupMenuStyle">@style/PopupMenu.Transplot</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Transplot</item>
+    </style>
+
+</resources>
