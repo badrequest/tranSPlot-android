@@ -3,5 +3,8 @@
 	<string name="app_name">tranSPlot</string>
 	<string name="hello_world">Hello world!</string>
 	<string name="menu_settings">Settings</string>
+    <string name="dialog_error_register">Não foi possível registrar seu dispositivo. Está conectado à internet?</string>
+    <string name="dialog_error_button">Tentar novamente</string>
+    <string name="dialog_error_title_no_connection">Sem conexão</string>
 
 </resources>

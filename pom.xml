@@ -7,44 +7,110 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.badrequest.transplot</groupId>
 	<artifactId>tranSPlot</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>apk</packaging>
 	<name>tranSPlot</name>
 
-	<properties>
+    <repositories>
+        <repository>
+            <id>repos</id>
+            <url>https://raw.github.com/gmarques33/repos/master/releases</url>
+        </repository>
+    </repositories>
+
+    <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Plugins -->
-		<android-maven-plugin.version>3.5.1</android-maven-plugin.version>
+		<android-maven-plugin.version>3.6.0</android-maven-plugin.version>
 		<maven-compiler-plugin.version>2.3.2</maven-compiler-plugin.version>
-		<api.platform>16</api.platform>
+		<api.platform>18</api.platform>
 
 		<!-- Dependencies -->
-		<androidannotations.version>2.7.1</androidannotations.version>
-		<android.version>4.1.1.4</android.version>
+
+        <androidannotations.version>3.0.1</androidannotations.version>
+        <android.version>4.4.2_r3</android.version>
+        <support-v4.version>19.0.1</support-v4.version>
+        <support-v7-appcompat.version>19.0.1</support-v7-appcompat.version>
+        <android-gcm.version>3</android-gcm.version>
+        <google-play-services.version>15.0.0</google-play-services.version>
+        <orman.version>20120316</orman.version>
 		<nineoldandroids.version>2.4.0</nineoldandroids.version>
 		<spring-android-rest-template.version>1.0.1.RELEASE</spring-android-rest-template.version>
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.google.android</groupId>
-			<artifactId>android</artifactId>
-			<scope>provided</scope>
-			<version>${android.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.googlecode.androidannotations</groupId>
-			<artifactId>androidannotations</artifactId>
+        <dependency>
+            <groupId>android</groupId>
+            <artifactId>android</artifactId>
+            <scope>provided</scope>
+            <version>${android.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v4</artifactId>
+            <version>${support-v4.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>${support-v7-appcompat.version}</version>
+            <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>android.support</groupId>
+            <artifactId>compatibility-v7-appcompat</artifactId>
+            <version>${support-v7-appcompat.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gcm</groupId>
+            <artifactId>gcm-client</artifactId>
+            <version>${android-gcm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gms</groupId>
+            <artifactId>google-play-services</artifactId>
+            <version>${google-play-services.version}</version>
+            <type>apklib</type>
+        </dependency>
+        <dependency>
+            <groupId>com.google.android.gms</groupId>
+            <artifactId>google-play-services</artifactId>
+            <version>${google-play-services.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations</artifactId>
 			<version>${androidannotations.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.googlecode.androidannotations</groupId>
-			<artifactId>androidannotations-api</artifactId>
+            <groupId>org.androidannotations</groupId>
+            <artifactId>androidannotations-api</artifactId>
 			<version>${androidannotations.version}</version>
 		</dependency>
-		<dependency>
+
+        <dependency>
+            <groupId>org.orman</groupId>
+            <artifactId>orman</artifactId>
+            <version>${orman.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>1.7.1</version>
+        </dependency>
+
+        <dependency>
 			<groupId>com.nineoldandroids</groupId>
 			<artifactId>library</artifactId>
 			<version>${nineoldandroids.version}</version>
@@ -54,7 +120,31 @@
 			<artifactId>spring-android-rest-template</artifactId>
 			<version>${spring-android-rest-template.version}</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>[3.0,)</version>
+        </dependency>
+        <dependency>
+            <groupId>com.viewpagerindicator</groupId>
+            <artifactId>library</artifactId>
+            <version>2.4.1</version>
+            <type>apklib</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.google.android</groupId>
+                    <artifactId>support-v4</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+    </dependencies>
 
 	<build>
 		<plugins>
