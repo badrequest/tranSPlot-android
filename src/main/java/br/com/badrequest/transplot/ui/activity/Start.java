@@ -75,7 +75,7 @@ public class Start extends Activity {
 
     @Background
     void register() {
-        Response response = transplotServiceMapper.registrar(new Auth(tManager.getDeviceId()));
+        Response response = transplotServiceMapper.register(new Auth(tManager.getDeviceId()));
         if(response != null && response.success()) {
             loginPrefs.edit().registered().put(true);
             openMenu();

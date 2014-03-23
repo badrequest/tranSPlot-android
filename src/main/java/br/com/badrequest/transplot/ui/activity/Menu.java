@@ -1,6 +1,7 @@
 package br.com.badrequest.transplot.ui.activity;
 
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Window;
@@ -64,7 +65,7 @@ public class Menu extends ActionBarActivity implements
         map.getUiSettings().setZoomControlsEnabled(false);
 
         //FIXME: Corrigir para funcionar automaticamente
-        map.setMyLocationEnabled(true);
+        //map.setMyLocationEnabled(true);
 
         getTwitter();
     }
@@ -73,6 +74,11 @@ public class Menu extends ActionBarActivity implements
     void openMapActivity() {
         startActivity(new Intent(this, Map_.class));
         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+    }
+
+    @Click(R.id.ibMonitor)
+    void openMonitorActivity() {
+        startActivity(new Intent(this, Monitor_.class));
     }
 
     @Background
@@ -104,9 +110,9 @@ public class Menu extends ActionBarActivity implements
     @Override
     public void onConnected(Bundle bundle) {
 
-//        Location location = mLocationClient.getLastLocation();
-//        GoogleMap map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-//
+        Location location = mLocationClient.getLastLocation();
+        GoogleMap map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+
 //        CameraUpdate center=
 //                CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),
 //                        location.getLongitude()));

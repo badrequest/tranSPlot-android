@@ -1,7 +1,9 @@
 package br.com.badrequest.transplot.integration.service.mapper;
 
 import br.com.badrequest.transplot.integration.bean.Auth;
+import br.com.badrequest.transplot.integration.bean.Region;
 import br.com.badrequest.transplot.integration.bean.Response;
+import br.com.badrequest.transplot.integration.bean.Traffic;
 import org.androidannotations.annotations.rest.Post;
 import org.androidannotations.annotations.rest.Rest;
 import org.androidannotations.api.rest.RestClientErrorHandling;
@@ -15,6 +17,9 @@ import org.springframework.http.converter.json.GsonHttpMessageConverter;
 public interface TransplotServiceMapper extends RestClientErrorHandling {
 
     @Post("/registrar")
-    Response registrar(Auth auth);
+    Response register(Auth auth);
+
+    @Post("/traffic/status")
+    Traffic getTraffic(Region region);
 
 }
