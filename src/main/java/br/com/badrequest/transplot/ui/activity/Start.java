@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.telephony.TelephonyManager;
+import android.view.Window;
+import android.view.WindowManager;
 import br.com.badrequest.transplot.R;
 import br.com.badrequest.transplot.integration.bean.Auth;
 import br.com.badrequest.transplot.integration.bean.Response;
@@ -32,6 +35,24 @@ public class Start extends Activity {
 
     @Bean
     ServiceErrorHandler serviceErrorHandler;
+
+    //TODO: Deixar externo a remocao das barras
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        int id = getResources().getIdentifier("config_enableTranslucentDecor", "bool", "android");
+        if (id != 0) { //KitKat or higher
+            boolean enabled = getResources().getBoolean(id);
+            // enabled = are translucent bars supported on this device
+            if (enabled) {
+                Window w = getWindow();
+                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+                w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            }
+        }
+        super.onCreate(savedInstanceState);
+    }
 
     @AfterInject
     void checkLogin() {

@@ -4,6 +4,68 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/map"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              class="com.google.android.gms.maps.SupportMapFragment"/>
 
+    <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#276E93FF"/>
+
+    <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/logo"/>
+
+    <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+        <ImageButton
+                android:id="@+id/ibMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_mapa_button"
+                android:layout_marginRight="10dp"/>
+
+        <ImageButton
+                android:id="@+id/ibMonitor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_monitor_button"
+                android:layout_marginRight="10dp"/>
+
+        <ImageButton
+                android:id="@+id/ibAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/custom_button_icon"
+                android:background="@drawable/ic_sobre_button"/>
+
+    </LinearLayout>
+
+    <TextView
+            android:id="@+id/tvTwitter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="50dp"
+            android:background="#aacccccc"
+            android:textColor="#ff546fff"
+            android:fontFamily="sans-serif-light"/>
 
 </RelativeLayout>

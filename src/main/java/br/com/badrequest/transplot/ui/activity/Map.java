@@ -1,11 +1,9 @@
 package br.com.badrequest.transplot.ui.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 import br.com.badrequest.transplot.R;
 import com.google.android.gms.common.ConnectionResult;
@@ -13,25 +11,18 @@ import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
-import org.androidannotations.annotations.*;
-import twitter4j.Status;
-import twitter4j.Twitter;
-import twitter4j.TwitterException;
-import twitter4j.TwitterFactory;
-import twitter4j.conf.ConfigurationBuilder;
-
-import java.util.List;
+import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.EActivity;
 
 /**
  * Created by gmarques on 3/22/14.
  */
-@EActivity(R.layout.menu)
-public class Menu extends ActionBarActivity implements
+@EActivity(R.layout.map)
+public class Map extends ActionBarActivity implements
         GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
 
-    @ViewById
-    TextView tvTwitter;
+    GoogleMap map;
 
     LocationClient mLocationClient;
 
@@ -50,66 +41,54 @@ public class Menu extends ActionBarActivity implements
                 w.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             }
         }
-
         mLocationClient = new LocationClient(this, this, this);
+
         super.onCreate(savedInstanceState);
     }
 
     @AfterViews
     void afterViews() {
         mLocationClient.connect();
-        GoogleMap map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
-        map.getUiSettings().setMyLocationButtonEnabled(false);
-        map.getUiSettings().setAllGesturesEnabled(false);
+        map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+        map.getUiSettings().setMyLocationButtonEnabled(true);
+        map.getUiSettings().setAllGesturesEnabled(true);
         map.getUiSettings().setZoomControlsEnabled(false);
+        map.getUiSettings().setCompassEnabled(false);
 
         //FIXME: Corrigir para funcionar automaticamente
         map.setMyLocationEnabled(true);
 
-        getTwitter();
+        addHeatMap();
     }
 
-    @Click(R.id.ibMap)
-    void openMapActivity() {
-        startActivity(new Intent(this, Map_.class));
-        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+
+    private void addHeatMap() {
+//        List<LatLng> list = new ArrayList<LatLng>();
+//
+//        list.add(new LatLng(-37.1886, 145.708));
+//        list.add(new LatLng(-37.8361, 144.845));
+//        list.add(new LatLng(-38.4034, 144.192));
+//        list.add(new LatLng(-38.7597, 143.67));
+//        list.add(new LatLng(-36.9672, 141.083));
+//
+//        // Create a heat map tile provider, passing it the latlngs of the police stations.
+//        TileProvider mProvider = new HeatmapTileProvider.Builder()
+//                .data(list)
+//                .build();
+//        // Add a tile overlay to the map, using the heat map tile provider.
+//        map.addTileOverlay(new TileOverlayOptions().tileProvider(mProvider));
     }
 
-    @Background
-    void getTwitter() {
-        try {
-            ConfigurationBuilder cb = new ConfigurationBuilder();
-            cb.setDebugEnabled(true)
-                    .setOAuthConsumerKey("tyVFkClEMvNhk9wXOzRFA")
-                    .setOAuthConsumerSecret("Idp6VGJ0Fo5ASZ1qjrOlDyi8AdkPr5OAGnjeKKDVZQ")
-                    .setOAuthAccessToken("43277931-5DGgSrw2wICiKEACrXLzOsCIVj979VQDtNUXOyuM1")
-                    .setOAuthAccessTokenSecret("b2q8V8XAK45MI0f9cQcJmuOwch5jNbaAKjZyoq9BvQLjC");
-            TwitterFactory tf = new TwitterFactory(cb.build());
-            Twitter twitter = tf.getInstance();
-
-            List<Status> statuses = twitter.getUserTimeline("cetsp_");
-            updateFeeds(statuses);
-        } catch (TwitterException e) {
-            //FIXME: Melhorar tratamento de erros
-            e.printStackTrace();
-        }
-    }
-
-    @UiThread
-    void updateFeeds(List<Status> statuses) {
-        tvTwitter.setText(statuses.get(0).getText());
-    }
 
 
     @Override
     public void onConnected(Bundle bundle) {
 
 //        Location location = mLocationClient.getLastLocation();
-//        GoogleMap map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
+//        map = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map)).getMap();
 //
 //        CameraUpdate center=
-//                CameraUpdateFactory.newLatLng(new LatLng(location.getLatitude(),
-//                        location.getLongitude()));
+//                CameraUpdateFactory.newLatLng(new LatLng(-37.1886, 145.708));
 //        CameraUpdate zoom= CameraUpdateFactory.zoomTo(13.2f);
 //
 //        map.moveCamera(center);
@@ -125,4 +104,5 @@ public class Menu extends ActionBarActivity implements
     public void onConnectionFailed(ConnectionResult result) {
         Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
     }
+
 }
